@@ -54,7 +54,7 @@ public class WebViewActivity extends AppCompatActivity {
                     }else{
                         intent.putExtra("thr","/");
                     }
-
+                    Log.e("test",arg1 + arg2 + arg3);
                     setResult(RESULT_OK, intent);
                     finish();
                 }
@@ -100,7 +100,7 @@ public class WebViewActivity extends AppCompatActivity {
         //browser.loadUrl("file:///android_asset/daum.html");
         //browser.loadUrl("http://www.daddyface.com/public/daum.html");
         //browser.loadUrl("http://cdn.rawgit.com/jolly73-df/DaumPostcodeExample/master/DaumPostcodeExample/app/src/main/assets/daum.html");
-        browser.loadUrl("http://cdn.rawgit.com/plk3314/DaumApi_LocalHtml/3e993a49/app/src/main/assets/daum.html");
+        browser.loadUrl("http://cdn.rawgit.com/plk3314/DaumApi_LocalHtml/96614a34/app/src/main/assets/daumapi.html");
 
     }
 

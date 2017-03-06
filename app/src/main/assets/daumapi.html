@@ -10,7 +10,7 @@
     new daum.Postcode({
         oncomplete: function(data) {
             if(data.userSelectedType=="R"){
-                window.TestApp.setAddress(data.zonecode, data.roadAddress, data.buildingName);
+                window.Android.processDATA(data.zonecode, data.roadAddress, data.buildingName);
             }
             else{
                 window.Android.processDATA(data.zonecode, data.jibunAddress, data.buildingName);
