@@ -1,6 +1,7 @@
 package blog.juno.daumapi_localhtml;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -39,17 +40,21 @@ public class WebViewActivity extends AppCompatActivity {
         }
     }
     private class AndroidBridge {
-
         @JavascriptInterface
-        public void processDATA(final String arg) { // must be final
+        public void processDATA(final String arg1, final String arg2, final String arg3) {
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    Log.e("test",arg);
-                    Bundle extra = new Bundle();
+
                     Intent intent = new Intent();
-                    extra.putString("data", arg);
-                    intent.putExtras(extra);
+                    intent.putExtra("fir",arg1);
+                    intent.putExtra("sec",arg2);
+                    if(!arg3.equals("")|| !(arg3.length()==0)){
+                        intent.putExtra("thr","/"+arg3);
+                    }else{
+                        intent.putExtra("thr","/");
+                    }
+
                     setResult(RESULT_OK, intent);
                     finish();
                 }
@@ -92,25 +97,11 @@ public class WebViewActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }*/
-        browser.loadUrl("file:///android_asset/daum.html");
+        //browser.loadUrl("file:///android_asset/daum.html");
         //browser.loadUrl("http://www.daddyface.com/public/daum.html");
         //browser.loadUrl("http://cdn.rawgit.com/jolly73-df/DaumPostcodeExample/master/DaumPostcodeExample/app/src/main/assets/daum.html");
+        browser.loadUrl("http://cdn.rawgit.com/plk3314/DaumApi_LocalHtml/3e993a49/app/src/main/assets/daum.html");
 
     }
-    public static String StreamToString(InputStream in) throws IOException {
-        if(in == null) {
-            return "";
-        }
-        Writer writer = new StringWriter();
-        char[] buffer = new char[1024];
-        try {
-            Reader reader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
-            int n;
-            while ((n = reader.read(buffer)) != -1) {
-                writer.write(buffer, 0, n);
-            }
-        } finally {
-        }
-        return writer.toString();
-    }
+
 }
