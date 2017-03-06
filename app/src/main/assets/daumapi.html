@@ -1,0 +1,22 @@
+<!--<meta http-equiv='Content-Type' content='text/html; charset=euc-kr' /> -->
+
+
+<html>
+<head>
+</head>
+<body>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script>
+    new daum.Postcode({
+        oncomplete: function(data) {
+            if(data.userSelectedType=="R"){
+                window.TestApp.setAddress(data.zonecode, data.roadAddress, data.buildingName);
+            }
+            else{
+                window.Android.processDATA(data.zonecode, data.jibunAddress, data.buildingName);
+            }
+        }
+    }).open();
+</script>
+</body>
+</html>
