@@ -41,7 +41,7 @@ public class WebViewActivity extends AppCompatActivity {
     }
     private class AndroidBridge {
         @JavascriptInterface
-        public void processDATA(final String arg1, final String arg2, final String arg3) {
+        public void returnData(final String arg1, final String arg2, final String arg3) {
             handler.post(new Runnable() {
                 @Override
                 public void run() {
@@ -98,11 +98,11 @@ public class WebViewActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }*/
-        //browser.loadUrl("file:///android_asset/test.html");
+        browser.loadUrl("file:///android_asset/test.html");
         //browser.loadUrl("http://www.daddyface.com/public/daum.html");
         //browser.loadUrl("http://cdn.rawgit.com/jolly73-df/DaumPostcodeExample/master/DaumPostcodeExample/app/src/main/assets/daum.html");
         //browser.loadUrl("http://cdn.rawgit.com/plk3314/DaumApi_LocalHtml/e838d0be/app/src/main/assets/daum.html");
-        browser.loadUrl("https://cdn.rawgit.com/plk3314/DaumApi_LocalHtml/d3fd237f/app/src/main/assets/daum.html");
+        //browser.loadUrl("https://cdn.rawgit.com/plk3314/DaumApi_LocalHtml/51364c79/app/src/main/assets/daum.html");
 
     }
 
