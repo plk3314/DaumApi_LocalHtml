@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
                     String data = intent.getExtras().getString("data");
                     if (data != null)
                         et_address.setText(data);
-
                 }
                 break;
 
