@@ -1,4 +1,4 @@
-﻿<meta http-equiv='Content-Type' content='text/html; charset=euc-kr' />
+﻿﻿<meta http-equiv='Content-Type' content='text/html; charset=euc-kr' />
 
 <html>
 <head>
@@ -23,6 +23,18 @@ function onReceivedPostMessage(event){
 
      console.log("onReceivedPostMessage "+event);
 }
+
+window.addEventListener("postMessage", onReceivedPostMessage2, false);
+
+function onReceivedPostMessage2(event){
+     //..ex deconstruct event into action & params
+     var action = event.data.action;
+     var params = event.data.params;
+
+     console.log("onReceivedPostMessage "+event);
+
+}
+
 
 function onReceivedActivityMessageViaJavascriptInterface(json){
      //..ex deconstruct data into action & params

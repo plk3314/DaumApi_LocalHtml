@@ -54,7 +54,7 @@ public class WebViewActivity extends AppCompatActivity {
                     }else{
                         intent.putExtra("thr","/");
                     }
-
+                    Log.e("test",arg1 + arg2 + arg3);
                     setResult(RESULT_OK, intent);
                     finish();
                 }
@@ -69,13 +69,11 @@ public class WebViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_web_view);
 
         browser = (WebView) findViewById(R.id.webView);
-        handler = new Handler();
-
         browser.getSettings().setJavaScriptEnabled(true);
         browser.getSettings().setDomStorageEnabled(true);
         browser.getSettings().setAllowFileAccessFromFileURLs(true);
         browser.addJavascriptInterface(new AndroidBridge(), "Android");
-        browser.loadUrl("https://cdn.rawgit.com/plk3314/DaumApi_LocalHtml/e838d0be/app/src/main/assets/daumapi.html");
+        handler = new Handler();
         browser.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -86,7 +84,7 @@ public class WebViewActivity extends AppCompatActivity {
             @Override
             public void onPageFinished(WebView view, String url) {
 
-                //browser.loadUrl("javascript:sample2_execDaumPostcode();");
+                browser.loadUrl("javascript:sample2_execDaumPostcode();");
             }
         });
 /*        String htmlFilename = "daum.html";
@@ -100,10 +98,11 @@ public class WebViewActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }*/
-        //browser.loadUrl("file:///android_asset/daum.html");
+        //browser.loadUrl("file:///android_asset/test.html");
         //browser.loadUrl("http://www.daddyface.com/public/daum.html");
         //browser.loadUrl("http://cdn.rawgit.com/jolly73-df/DaumPostcodeExample/master/DaumPostcodeExample/app/src/main/assets/daum.html");
-
+        //browser.loadUrl("http://cdn.rawgit.com/plk3314/DaumApi_LocalHtml/e838d0be/app/src/main/assets/daum.html");
+        browser.loadUrl("https://cdn.rawgit.com/plk3314/DaumApi_LocalHtml/d3fd237f/app/src/main/assets/daum.html");
 
     }
 
