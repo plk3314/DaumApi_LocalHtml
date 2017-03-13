@@ -23,22 +23,7 @@ public class WebViewActivity extends AppCompatActivity {
 
     private WebView browser;
     private Handler handler;
-    class MyJavaScriptInterface
-    {
-        @JavascriptInterface
-        @SuppressWarnings("unused")
-        public void processDATA(final String data) {
 
-            Bundle extra = new Bundle();
-            Intent intent = new Intent();
-            extra.putString("data", data);
-            intent.putExtras(extra);
-            setResult(RESULT_OK, intent);
-            finish();
-
-
-        }
-    }
     private class AndroidBridge {
         @JavascriptInterface
         public void returnData(final String arg1, final String arg2, final String arg3) {
@@ -70,23 +55,16 @@ public class WebViewActivity extends AppCompatActivity {
 
         browser = (WebView) findViewById(R.id.webView);
         browser.getSettings().setJavaScriptEnabled(true);
-        browser.getSettings().setDomStorageEnabled(true);
-        browser.getSettings().setAllowFileAccessFromFileURLs(true);
         browser.addJavascriptInterface(new AndroidBridge(), "Android");
-        handler = new Handler();
-        browser.setWebViewClient(new WebViewClient() {
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
-                return true;
-            }
 
+        browser.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
 
                 browser.loadUrl("javascript:sample2_execDaumPostcode();");
             }
         });
+
 /*        String htmlFilename = "daum.html";
         AssetManager mgr = getBaseContext().getAssets();
         try {
@@ -98,11 +76,12 @@ public class WebViewActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }*/
-        browser.loadUrl("file:///android_asset/test.html");
+        //browser.loadUrl("file:///android_asset/test.html");
         //browser.loadUrl("http://www.daddyface.com/public/daum.html");
         //browser.loadUrl("http://cdn.rawgit.com/jolly73-df/DaumPostcodeExample/master/DaumPostcodeExample/app/src/main/assets/daum.html");
         //browser.loadUrl("http://cdn.rawgit.com/plk3314/DaumApi_LocalHtml/e838d0be/app/src/main/assets/daum.html");
         //browser.loadUrl("https://cdn.rawgit.com/plk3314/DaumApi_LocalHtml/51364c79/app/src/main/assets/daum.html");
+        browser.loadUrl("http://rawgit.com/plk3314/DaumApi_LocalHtml/master/app/src/main/assets/test.html");
 
     }
 
